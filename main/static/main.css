@@ -1,0 +1,190 @@
+
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+
+
+.menu {
+position: absolute;
+top: 0;
+left: 0;
+background: #0B0C10;
+width: 300px;
+height: 100%;
+transform: translate3d(-290px, 0, 0);
+transition: transform 0.35s;
+}
+.menu label.menu-toggle {
+    position: absolute;
+    right: -60px;
+    width: 60px;
+    height: 60px;
+    line-height: 0px;
+    display: block;
+    padding: 0;
+    text-indent: -9999px;
+    background-color: #66FCF1;
+    }
+.menu ul li > label {
+    background: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-right-b-128.png) 95% 50%/16px 16pxno-repeat;
+}
+.menu ul li a, .menu ul li label {
+display: block;
+text-align: center;
+padding: 0 20px;
+line-height: 60px;
+text-decoration: none;
+color: #66FCF1;
+}
+.menu ul li a:hover, .menu ul li label:hover {
+color: #46A29F;
+}  
+/* hide inputs */
+.menu-checkbox {
+display: none;
+}  
+/* hide navigation icon for sublabels */
+.menu .menu label.menu-toggle {
+background: none;
+}  
+/* fade in checked menu */
+.menu-checkbox:checked + .menu {
+transform: translate3d(0, 0, 0);
+}
+
+
+
+
+
+.control-label {
+    
+    color:#46A29F;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Indie Flower'
+    
+}
+
+.control-label-2 {
+    
+    color:#46A29F;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Indie Flower'
+    
+}
+
+.form-field{
+    
+    width:400px;
+    height:30px;
+    transition:1s;
+    background-color:white;
+    
+
+}
+.form-field:hover{
+    width:400px;
+    height:30px;
+    transition:1s;
+    background-color:linen;
+    cursor:pointer;
+    
+
+}
+
+.form-field-social{
+    
+    width:400px;
+    height:90px;
+    transition:1s;
+    background-color:white;
+    
+
+}
+.form-field-social:hover{
+    width:400px;
+    height:90px;
+    transition:1s;
+    background-color:linen;
+    cursor:pointer;
+    
+
+}
+
+.form1{
+    max-width:700px;
+    margin: 12rem auto;
+    border:4px solid #46A29F;
+    padding:1rem;
+    
+}
+
+
+.form1:hover{
+    max-width:700px;
+    margin: 12rem auto;
+    border:4px solid #66FCF1;
+    padding:1rem;
+    
+    transition: .4s;
+}
+
+
+body{
+    background-color: #0A0E14;
+}
+
+.lbl{
+color : #66FCF1;
+
+}
+
+.signhead{
+    color :#46A29F;
+    text-align:center;
+    font-size:50px;
+    margin-top: 7rem auto;
+    font-family: 'Indie Flower';
+    text-decoration: underline;
+
+}
+
+.link {
+    color :#46A29F;
+    font-size:50px;
+    font-family: 'Indie Flower';
+    text-align: center;
+    
+}
+
+.link:hover {
+    color :#66FCF1;
+    text-align: center;
+    font-size:60px;
+    transition: .2s;
+    font-family: 'Indie Flower';
+    text-decoration: underline;
+
+}
+
+.anch{
+    color:#46A29F
+}
+
+.anch:hover{
+    color:#66FCF1
+}
+
+.ulx{
+    background-color:#FFD5D5 ;
+    max-width: 400px;
+}
+
+.lix{
+    color:red
+}
+
+h1{
+    text-align: center;
+    color:#66FCF1;
+}
