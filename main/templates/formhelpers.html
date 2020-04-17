@@ -13,6 +13,20 @@
 </div>
 {% endmacro %}
 
+{% macro render_social_field(field) %}
+<div >
+    <label for="{{ field.name }}" class="control-label">{{ field.label.text }}</label>
+    <div class>
+        {{ field(class_='form-field-social', **kwargs)|safe }}
+    
+        <ul class='ulx'>
+            {% for error in field.errors %}
+            <li class='lix' >{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endmacro %}
 
 {% macro render_radio_field(field) %}
 <div >

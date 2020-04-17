@@ -95,3 +95,17 @@
   transform: translateY(-130%);
   transition: 1s 0.75s;
 }
+
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.4;
+}
+
+
+
+

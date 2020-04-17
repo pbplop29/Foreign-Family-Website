@@ -1,8 +1,12 @@
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, Form, RadioField, SelectField, ValidationError, TextAreaField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from wtforms.fields.html5 import DateField
 from main.models import User
+
+from flask_login import current_user
+#This is done for the updateform
 
 
 
@@ -43,7 +47,7 @@ class signupform(FlaskForm):
 
     country = StringField('Country', validators=[DataRequired(), Length(min=2, max=20)])
 
-    social = StringField(' How can we reach you ')
+    social = TextAreaField(' How can we reach you ')
 
     password = PasswordField('Password', validators=[DataRequired()])
 
@@ -59,7 +63,7 @@ class signupform(FlaskForm):
 
     
 
-    gender = RadioField('Gender', choices= [('1', 'Male'), ('2', 'Female'), ('3', 'Amongst LGBTQ.....')])
+    gender = RadioField('Gender', choices= [('Male', 'Male'), ('Female', 'Female'), ('LGBTQ...', 'Amongst LGBTQ.....')])
 
 
     age = SelectField("Age group", choices=[
@@ -81,3 +85,82 @@ class signupform(FlaskForm):
         user = User.query.filter_by(rollno=rollno.data).first()
         if user:
             raise ValidationError('The Roll No already exists.')
+
+
+
+
+
+
+
+
+
+#we imported current user so that:
+#incase someone wants to update without some changes to their stuff
+#the validators below will show error because those unchnaged values exist in our database and wont let us submit
+#hence we import curnt user and apply conditions that the conditional work only if different calues are input
+class updateform(FlaskForm):
+    
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+
+    email = StringField('Email',
+                        validators=[DataRequired(), Email()])
+
+    fname = StringField('First Name', validators=[DataRequired(), Length(min=2, max=20)])
+
+    mname = StringField('Middle Name')
+
+    lname = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=20)])
+
+    degree = StringField('Degree', validators=[DataRequired(), Length(min=2, max=20)])
+
+    branch = StringField('Branch', validators=[DataRequired(), Length(min=2, max=20)])
+
+
+    rollno = StringField('Roll No', validators=[DataRequired(), Length(min=5)])
+    
+
+
+
+    social = TextAreaField(' How can we reach you ')
+
+
+    gender = RadioField('Gender', choices= [('Male', 'Male'), ('Female', 'Female'), ('LGBTQ...', 'Amongst LGBTQ.....')])
+
+
+
+
+    submit = SubmitField('Update')
+
+    def validate_username(self, username):
+        if username.data != current_user.username:
+            user = User.query.filter_by(username=username.data).first()
+            if user:
+                raise ValidationError('The username already exists.')
+    def validate_email(self, email):
+        if email.data != current_user.email:
+            user = User.query.filter_by(email=email.data).first()
+            if user:
+                raise ValidationError('The email already exists.')
+    def validate_rollno(self, rollno):
+        if rollno.data != current_user.rollno:
+            user = User.query.filter_by(rollno=rollno.data).first()
+            if user:
+                raise ValidationError('The Roll No already exists.')
+#added  if rollno.data != current_user.rollno: these in our validator functions so that we can submit our own preexisting values
+
+
+
+
+
+
+class exploreform(FlaskForm):
+    question = StringField('Country', validators=[DataRequired()])
+
+    submit = SubmitField('Search')
+
+class exploreform2(FlaskForm):
+    question2 = StringField('Branch', validators=[DataRequired()])
+
+    submit2 = SubmitField('Search')
+
+    

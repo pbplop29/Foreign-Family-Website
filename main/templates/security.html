@@ -1,16 +1,14 @@
-{% extends "layout2.html" %} {% block content %}
+{% extends "layout.html" %} {% block content %}
 {%from "formhelpers.html" import render_field%}
+{%from "formhelpers.html" import render_social_field%}
 {%from "formhelpers.html" import render_radio_field%}
 {%from "formhelpers.html" import render_recap%}
-{%from "formhelpers.html" import render_social_field%}
 
+<h1 class = 'welcome'>Security</h1>
 
-<h1 class = 'signhead'> Please Sign Up First, To Get Access To The Website</h1>
+<h1 class = 'signhead'> Change Account Details </h1>
 
-
-
-
-<form action="/signup" method="POST" class='form1'>
+<form action="/security" method="POST" class='form2'>
     
     {{form.csrf_token}}
     {{ form.hidden_tag() }}
@@ -26,47 +24,17 @@
 
     {{render_field(form.lname,   PLACEHOLDER=form.lname.label.text)}}
     
-    {{render_field(form.birthdate) }}
-
-    {{render_field(form.batch,   PLACEHOLDER=('eg. 2019-2023'))}}
-
+    
     {{render_field(form.degree,   PLACEHOLDER=('PhD/Masters/Bachelors'))}}
 
     {{render_field(form.branch,   PLACEHOLDER=('Acronym'))}}
 
     {{render_field(form.rollno,   PLACEHOLDER=('Roll No. answers  the 3 questions above :p '))}}
 
-    {{render_field(form.country,   PLACEHOLDER=('Country'))}}
-
     {{render_social_field(form.social,   PLACEHOLDER='Links to Socials (Optional)')}}
 
     
-    
-    
-    
-    
-    
-    
     {{render_radio_field(form.gender) }}
-    
-    {{render_field(form.age) }}
-    
-    
-    
-    {{render_field(form.password,   PLACEHOLDER=form.password.label.text)}}
-    
-    
-    
-    {{render_field(form.confirm_password,   PLACEHOLDER=form.password.label.text)}}
-    
-    
-    {{render_recap(form.recaptcha)}}
-    
-    
-    
-    
-    
-    
     
     
     
@@ -79,12 +47,4 @@
     </form>
 
 
-
-
-<h1 class = 'signhead'> Already have an account?</h1>
-<div class = 'link'>
-    <ul>
-    <a href="{{url_for('signin')}}" class="anch" >Sign In</a>
-</ul>
-</div>
 {% endblock content %}

@@ -1,0 +1,74 @@
+
+
+{% extends "layout.html" %} {% block content %}
+
+
+
+{%from "formhelpers.html" import render_field%}
+
+
+
+
+<h1 class = 'welcome'>Explore</h1>
+<div class='form1'>
+<form action="/explore" method="POST" >
+    {{ form1.csrf_token }}
+
+    {{ form1.hidden_tag() }}
+
+    {{render_field(form1.question, PLACEHOLDER=form1.question.label.text)}}
+
+    {{form1.submit(class="text-success")}}
+
+</form>
+
+<form action="/explore" method="POST" >
+    {{ form2.csrf_token }}
+
+    {{ form2.hidden_tag() }}
+
+    {{render_field(form2.question2, PLACEHOLDER=form2.question2.label.text)}}
+
+    {{form2.submit2(class="text-success")}}
+</form>
+</div>
+
+
+<div class = 'explore-container'>
+    <input type='checkbox' id='explore-check' 
+onClick='showhide()' value='yes'>
+    
+<h1 id='explore-data' style="display:none">This must be hidden when checked in </h1>
+{% for i in email %}
+
+    <h1 class = 'red'> {{ i}} </h1>
+
+{% endfor %}
+
+<h1 class = 'red'>{{ username }}</h1>
+<h1 class = 'red'>{{ rollno }}</h1>
+<h1 class = 'red'>{{ image_file }}</h1>
+<h1 class = 'red'>{{ branch }}</h1>
+<h1 class = 'red'>{{ ans }}</h1>
+<h1 class = 'red'>{{ qn }}</h1>
+
+</div>
+
+
+
+
+<script>
+
+function showhide(){
+
+    if(document.getElementById('explore-check').checked){
+        document.getElementById('explore-data').style.display = 'block';}
+        else{
+
+        document.getElementById('explore-data').style.display = 'none';
+    }}
+
+</script>
+
+
+{% endblock content %}

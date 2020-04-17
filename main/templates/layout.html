@@ -6,9 +6,9 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -57,24 +57,30 @@
         <a href="/about">About</a>
     </li>
     <li>
-        <label for="profile">Profile &nbsp &nbsp ></label>
+        <a href="/explore">Explore</a>
+    </li>
+    <li>
+        <label for="profile" id='inv'>Account</label>
         <input type="checkbox" id="profile" name="profile" class="menu-checkbox">
         <div class="menu">
-        <label class="menu-toggle" for="profile"><span>Toggle</span></label>
+        <label class="menu-toggle" for="profile"><span><i class="fas fa-align-justify"></i></span></label>
         <ul>
             <li>
-            <a href="#">General</a>
-            <a href="#">Security</a>
+            <a href="/profile">Profile</a>
+            <a href="/security">Change Account-info</a>
             </li>
         </ul>
     
     <li>
-        <a href="/contact">Contact The Creators</a>
+        <a href="/contact">Creator</a>
     </li>
-    <li>
-        <a href="/signout">Log Out</a>
-    </li>
+    
     </ul>
+    <ul>
+    <li>
+        <a href="/signout" id='lo'>Log Out</a>
+    </li>
+</ul>
 </div>
 </div>
 

@@ -1,0 +1,4 @@
+id,username,email,fname,mname,lname,batch,degree,branch,rollno,country,social,birthdate,gender,age,password,image_file
+1,pbplop29,legblack321@gmail.com,Biplov,Kumar ,Pokhrel,2019-2023,Bachelors,ECE,119EC1010,Nepal,fb.com/pbplop@gmail.com,2001-11-29,Male,2,sha256$WJ9ObvIE$e98629674921609a7b7bf3ec5cc8f2dec55f63bce0ea3f37056fc989504fba1b,default.jpg
+2,anurag22,vizculus@gmail.com,Anurag,Prasad,Lamsal,2019-2023,PhD,MM,119MM1010,Afganistan,fb.com/anurag@gmail.com,2000-07-18,Male,3,sha256$8EWvvJXB$84940ce41c6e081d79f11ec1f403652d1957fd5b8b57767e7b1f21d708009848,default.jpg
+3,Suvash,suvash@gmail.com,Suvash,,Yadav,2019-2023,Bachelors,ECE,119CS0140,USA,,2020-04-23,Male,3,sha256$LUKJ6fxD$0e06eaca716715c71b76ced210dcd712fb6711e2a51dc8cd36e56a4bb3387030,default.jpg
