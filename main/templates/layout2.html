@@ -1,6 +1,10 @@
+<!-- ----------------------------------------------------------------------- -->
+<!--   LAYOUT PGAE WITHOUT THE NAIGATION MENU FOR SIGNIN AND SIGNUP PAGES    -->
+<!-- ----------------------------------------------------------------------- -->
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 
 <head>
 
@@ -28,7 +32,6 @@
 
 </head>
 
-
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for category, message in messages %}
@@ -39,21 +42,11 @@
 {% endif %}
 {% endwith %}
 
-
-
-
-
 <body>
-
-
-
-
-
 
     {% block content %} {% endblock content %}
 
-
-
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

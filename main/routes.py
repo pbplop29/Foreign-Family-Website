@@ -1,22 +1,55 @@
+
+
+# ---------------------------------------------------------------------------- #
+#                                    IMPORTS                                   #
+# ---------------------------------------------------------------------------- #
+
+
+
+
+# --------------------- Imported the app from the package -------------------- #
 from main import app
+
+
+# ------------------- Imported necessary methods from flask ------------------ #
 from flask import render_template, flash, redirect, url_for, request
+
+
+# ------------------- Imported the password hashing modules ------------------ #
 from werkzeug.security import generate_password_hash, check_password_hash
+
+
+# ---------------------------- Imported the models --------------------------- #
 from main.models import User
+
+
+# ---------------------------- Imported the froms ---------------------------- #
 from main.forms import signinform, signupform, updateform, exploreform, exploreform2
 
+
+#------------------------ imported flask login modules ----------------------- #
 from flask_login import login_user, current_user, logout_user, login_required
 
+
+# ------------------ imported current user from flask login ------------------ #
 from flask_login import current_user
 
+
+# ---------------------- Imported db from init, package ---------------------- #
 from main import db
+
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 
 
 #login required comes with a link in init file
-#login required prevents to gain access if not logged in 
+#login required prevents to gain access if not logged in  --> basically not letting people to access home, about, profile, explore, etc.
 
 #is authenticated prevents to gain access if logged in --> basically not letting people to access signin or singup pages
 
 
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 
 
 
@@ -25,28 +58,53 @@ from main import db
 
 
 
+# ---------------------------------------------------------------------------- #
+#                                    ROUTES                                    #
+# ---------------------------------------------------------------------------- #
 
 
 
 
+# ----------------------------- Start Page Route ----------------------------- #
 @app.route("/")
 @app.route("/start")
 def start():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     return render_template("start.html", title_given="Start")
+    
+    
+    
+# ---------------------------------------------------------------------------- #
 
+
+
+# ------------------------------ Home Page Route ----------------------------- #
 @app.route("/home")
 @login_required
 def home():
     
     return render_template("home.html", title_given="Home")
+    
+    
+    
+# ---------------------------------------------------------------------------- #
 
+
+
+# ----------------------------- About Page Route ----------------------------- #
 @app.route("/about")
 @login_required
 def about():
     return render_template("about.html", title_given="About")
+    
+    
+    
+# ---------------------------------------------------------------------------- #
 
+
+
+# ---------------------------- Explore Page Route ---------------------------- #
 @app.route("/explore" , methods=['GET', 'POST'])
 @login_required
 def explore():
@@ -60,8 +118,8 @@ def explore():
         ans = (str(form2.question2.data))
         data = User.query.filter_by(branch = ans)
     if form1.validate_on_submit():
-        qn = (str(form1.question.label.text)).lower()
-        ans = (str(form1.question.data))
+        qn = (str(form1.question1.label.text))
+        ans = (str(form1.question1.data))
         data = User.query.filter_by(country = ans)
     
     emaill = []
@@ -69,25 +127,26 @@ def explore():
     rollnol = []
     imagel=[]
     branchl=[]
+    batchl=[]
     for i in data:
         emaill.append(i.email)
         usernamel.append(i.username)
         rollnol.append(i.rollno)
         imagel.append(i.image_file)
         branchl.append(i.branch)
+        batchl.append(i.batch)
 
     
         
-    return render_template("explore.html", title_given="Explore", email=emaill, username=usernamel, rollno=rollnol, image_file=imagel, form1=form1, ans=ans, qn=qn , form2=form2, branch= branchl)
+    return render_template("explore.html", title_given="Explore", email=emaill, username=usernamel, rollno=rollnol, image_file=imagel, form1=form1, ans=ans, qn=qn , form2=form2, branch= branchl, batch=batchl)
 
 
 
+# ---------------------------------------------------------------------------- #
 
 
 
-
-
-
+# ---------------------------- General Page Route ---------------------------- #
 @app.route("/profile")
 @login_required
 def profile():
@@ -96,13 +155,11 @@ def profile():
 
 
 
+# ---------------------------------------------------------------------------- #
 
 
 
-
-
-
-
+# --------------------- Change Account Details Page Route -------------------- #
 @app.route("/security", methods=['GET', 'POST'])
 @login_required
 def security():
@@ -145,34 +202,26 @@ def security():
         
 
     return render_template("security.html", title_given="Security", form=form)
-    
 
 
 
+# ---------------------------------------------------------------------------- #
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# ---------------------------- Contact Page Route ---------------------------- #
 @app.route("/contact")
 @login_required
 def contact():
     return render_template("contact.html", title_given="Contact")
 
+
+
+# ---------------------------------------------------------------------------- #
+
+
+
+# ----------------------------- SignIn Page Route ---------------------------- #
 @app.route("/signin", methods=['GET', 'POST'])
 def signin():
     if current_user.is_authenticated:
@@ -195,7 +244,11 @@ def signin():
 
 
 
+# ---------------------------------------------------------------------------- #
 
+
+
+# ----------------------------- Signup Page Route ---------------------------- #
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
@@ -212,9 +265,17 @@ def signup():
         
     return render_template("signup.html", title_given="Sign Up", form=form)
 
+
+
+# ---------------------------------------------------------------------------- #
+
+
+
+# ---------------------------- Signout Page Route ---------------------------- #
 @app.route("/signout")
 @login_required
 def signout():
     logout_user()
     return redirect(url_for('start'))
 
+# ---------------------------------------------------------------------------- #

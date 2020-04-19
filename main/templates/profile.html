@@ -1,7 +1,10 @@
+<!-- -------------------------- LAOYOUT EXTENDED --------------------------- -->
 {% extends "layout.html" %} {% block content %}
 
 <h1 class='welcome'> {{current_user.fname}}'s Profile</h1>
 
+
+<!-- ------------- TOP SECTION WITH IMAGE, USERNAME AND EMAIL -------------- -->
 <div class="content-section">
     
         <img class=" border  border-danger rounded-circle account-img" src={{ image_file }}>
@@ -12,8 +15,11 @@
     
     <!-- FORM HERE -->
 </div>
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
 
 
+<!-- ---------------- LOWER SECTION WITH ALL EXTRA DETAILS ----------------- -->
 <div class = 'account-info'>
     <h1 class = 'info-label'> Name</h1>
     <h2 class = 'info-detail'> {{current_user.fname}} {{current_user.mname}} {{current_user.lname}}</h2>
@@ -44,5 +50,7 @@
     <h2 class='info-detail'>{{current_user.social}}</h2>
     
 </div>
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
 
 {% endblock content %}

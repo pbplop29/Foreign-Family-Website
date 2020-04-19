@@ -1,18 +1,32 @@
+<!-- --------------------------- LAYOUT EXTENDED --------------------------- -->
 {% extends "layout.html" %} {% block content %}
 {%from "formhelpers.html" import render_field%}
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!--                                 IMPORTS                                 -->
+<!-- ----------------------------------------------------------------------- -->
 {%from "formhelpers.html" import render_social_field%}
 {%from "formhelpers.html" import render_radio_field%}
 {%from "formhelpers.html" import render_recap%}
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
 
+
+<!-- ------------------------------- TOPBAR -------------------------------- -->
 <h1 class = 'welcome'>Security</h1>
 
+<!-- ----------------------------- TOP MESSAGE ----------------------------- -->
 <h1 class = 'signhead'> Change Account Details </h1>
 
+
+<!-- ----------------------- FORM TO UPDATE ACCOUNT ------------------------ -->
 <form action="/security" method="POST" class='form2'>
     
     {{form.csrf_token}}
     {{ form.hidden_tag() }}
-    
     
     {{render_field(form.username,   PLACEHOLDER=form.username.label.text)}}
     
@@ -24,7 +38,6 @@
 
     {{render_field(form.lname,   PLACEHOLDER=form.lname.label.text)}}
     
-    
     {{render_field(form.degree,   PLACEHOLDER=('PhD/Masters/Bachelors'))}}
 
     {{render_field(form.branch,   PLACEHOLDER=('Acronym'))}}
@@ -33,17 +46,10 @@
 
     {{render_social_field(form.social,   PLACEHOLDER='Links to Socials (Optional)')}}
 
-    
     {{render_radio_field(form.gender) }}
     
-    
-    
-    
     {{form.submit (class="text-success p-2  ")}}
-
     
-    
-
     </form>
 
 
