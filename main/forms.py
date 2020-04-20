@@ -195,7 +195,7 @@ class updateform(FlaskForm):
 # ---------------------------- Country Select Form --------------------------- #
 class exploreform(FlaskForm):
 
-    question1 = CountrySelectField('Your Country')
+    question1 = CountrySelectField('Country')
 
     submit = SubmitField('Search')
 # ---------------------------------------------------------------------------- #
@@ -206,6 +206,13 @@ class exploreform2(FlaskForm):
     question2 = StringField('Branch', validators=[Length(max=50)])
 
     submit2 = SubmitField('Search')
+# ---------------------------------------------------------------------------- #
+
+# ---------------------------- Branch Select Form ---------------------------- #
+class exploreform3(FlaskForm):
+    question3 = StringField('Username', validators=[Length(max=50)])
+
+    submit3 = SubmitField('Show Details')
 # ---------------------------------------------------------------------------- #
 
 

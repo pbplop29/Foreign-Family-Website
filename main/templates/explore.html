@@ -3,14 +3,22 @@
 {% extends "layout.html" %} {% block content %}
 
 
+<!-- ----------------------------------------------------------------------- -->
+<!--                                 IMPORTS                                 -->
+<!-- ----------------------------------------------------------------------- -->
 
 {%from "formhelpers.html" import render_field%}
 {%from "formhelpers.html" import render_country_field%}
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
 
 
 
-
+<!-- ------------------------------ TOP LINE ------------------------------- -->
 <h1 class = 'welcome'>Explore</h1>
+
+
+<!-- -------------------------- COUNTRY FORM PART -------------------------- -->
 <div class='form3'>
 <form action="/explore" method="POST" >
     {{ form1.csrf_token }}
@@ -18,25 +26,29 @@
     {{ form1.hidden_tag() }}
 
     {{ render_country_field(form1.question1) }}
+    <h1></h1>
+    <h1></h1>
     {{form1.submit(class="text-success")}}
 
     
 
 </form>
 
+<!-- -------------------------- BRANCH FORM PART --------------------------- -->
 <form action="/explore" method="POST" >
     {{ form2.csrf_token }}
 
     {{ form2.hidden_tag() }}
 
     {{render_field(form2.question2, PLACEHOLDER=form2.question2.label.text)}}
+    
     {{form2.submit2(class="text-success")}}
 </form>
 </div>
 
 
 
-
+<!-- ------------------- EXPLORE CONTAINER FOR THE LIST -------------------- -->
 <div class = 'explore-container'>
 
 <div class='row'>
@@ -85,6 +97,83 @@
 </div>
 
 </div>
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+<!-- -------------------- FORM FOR THE USERNAME SEARCH --------------------- -->
+
+<div class='form3'>
+    <form action="/explore" method="POST" >
+        {{ form3.csrf_token }}
+    
+        {{ form3.hidden_tag() }}
+    
+        {{render_field(form3.question3, PLACEHOLDER=form3.question3.label.text)}}
+        {{form3.submit3(class="text-success")}}
+    </form>
+</div>
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+<!-- ------------- TOP SECTION WITH IMAGE, USERNAME AND EMAIL -------------- -->
+<div class="content-section">
+    
+    <img class=" border  border-danger rounded-circle account-img" src={{ image_file }}>
+    <div class="media-body">
+        <h2 class="account-username">{{searched_user.username}}</h2>
+        <p class="account-email">{{searched_user.email}}</p>
+    </div>
+
+
+</div>
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+<!-- ---------------- LOWER SECTION WITH ALL EXTRA DETAILS ----------------- -->
+<div class = 'account-info'>
+<h1 class = 'info-label'> Name</h1>
+<h2 class = 'info-detail'> {{searched_user.fname}} {{searched_user.mname}} {{searched_user.lname}}</h2>
+<h3 class = 'info-line'>------------------------------------------</h3>
+<h1 class = 'info-label'>Country</h1>
+<h2 class = 'info-detail'>{{searched_user.country}}</h2>
+<h3 class = 'info-line'>-----------------------------------------------------------------------</h3>
+<h1 class = 'info-label'>Batch</h1>
+<h2 class = 'info-detail'>{{searched_user.batch}}</h2>
+<h3 class = 'info-line'>-----------------------------------------------------------------------</h3>
+<h1 class = 'info-label'>Degree</h1>
+<h2 class = 'info-detail'>{{searched_user.degree}}</h2>
+<h3 class = 'info-line'>-----------------------------------------------------------------------</h3>
+<h1 class = 'info-label'>Branch</h1>
+<h2 class = 'info-detail'>{{searched_user.branch}}</h2>
+<h3 class = 'info-line'>-----------------------------------------------------------------------</h3>
+<h1 class = 'info-label'>Roll Number</h1>
+<h2 class = 'info-detail'>{{searched_user.rollno}}</h2>
+<h3 class = 'info-line'>-----------------------------------------------------------------------</h3>
+<h1 class = 'info-label'>Date of Birth</h1>
+<h2 class = 'info-detail'>{{searched_user.birthdate}}</h2>
+<h3 class = 'info-line'>-----------------------------------------------------------------------</h3>
+<h1 class = 'info-label'>Gender</h1>
+<h2 class = 'info-detail'>{{searched_user.gender}}</h2>
+<h3 class = 'info-line'>------------------------------------------</h3>
+<h1 class = 'info-label'>Link To Socials</h1>
+
+<h2 class='info-detail'>{{searched_user.social}}</h2>
+
+</div>
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+</div>
+
+
 
 
 

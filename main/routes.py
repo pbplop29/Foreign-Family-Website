@@ -24,7 +24,7 @@ from main.models import User
 
 
 # ---------------------------- Imported the froms ---------------------------- #
-from main.forms import signinform, signupform, updateform, exploreform, exploreform2
+from main.forms import signinform, signupform, updateform, exploreform, exploreform2, exploreform3
 
 
 #------------------------ imported flask login modules ----------------------- #
@@ -108,11 +108,16 @@ def about():
 @app.route("/explore" , methods=['GET', 'POST'])
 @login_required
 def explore():
+
+    
+
     form1 =  exploreform()
     form2 = exploreform2()
+    form3 = exploreform3()
     ans = ''
     qn = ''
     data= []
+    searched_user=''
     if form2.validate_on_submit():   
         qn = (str(form2.question2.label.text)).lower()
         ans = (str(form2.question2.data))
@@ -125,20 +130,22 @@ def explore():
     emaill = []
     usernamel = []
     rollnol = []
-    imagel=[]
     branchl=[]
     batchl=[]
     for i in data:
         emaill.append(i.email)
         usernamel.append(i.username)
         rollnol.append(i.rollno)
-        imagel.append(i.image_file)
         branchl.append(i.branch)
         batchl.append(i.batch)
 
-    
+    input_search = str(form3.question3.data)
+    searched_user = User.query.filter_by(username = input_search).first()
+    image_file = ''
+    if searched_user:
+        image_file = url_for ('static', filename='pp/' + searched_user.image_file)
         
-    return render_template("explore.html", title_given="Explore", email=emaill, username=usernamel, rollno=rollnol, image_file=imagel, form1=form1, ans=ans, qn=qn , form2=form2, branch= branchl, batch=batchl)
+    return render_template("explore.html", title_given="Explore", email=emaill, username=usernamel, rollno=rollnol, form1=form1, ans=ans, qn=qn , form2=form2, branch= branchl, batch=batchl, form3=form3, searched_user=searched_user, image_file=image_file)
 
 
 

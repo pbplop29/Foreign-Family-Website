@@ -1,6 +1,45 @@
 <!-- ------------------------ LAYOUT BLOCK EXTENDED ------------------------ -->
 {% extends "layout.html" %} {% block content %}
+
+
+
+
 <h1 class = 'welcome'>Welcome, {{current_user.fname}}</h1>
 
+<div class = 'square'>
+    
+    <span></span>
+    <span></span>
+    <span></span>
+    <div class = 'home-page-square-content'>
+        <h2 class='home-page-square-title'> Getting Started</h2>
+        <p>Cheers!
+            You are now a member of the Foreign Family Zone at NITRKL. Signing Up to the website; you have done the most. You can know more about us by going to the About tab in the navigation menu. You can use the maple leaves for quick scrolling.
+        </p>
+        
+    </div>
+</div>
+<div class = 'square'>
+    
+    <span></span>
+    <span></span>
+    <span></span>
+    <div class = 'home-page-square-content'>
+        <h2 class='home-page-square-title'> Explore The Community</h2>
+        <p>Get a list of Users from a country or a branch. You can search for a user to access their profiles, socials and contact info by visiting the Explore tab in the navigation menu.</p>
+        <a href = '/explore'> Visit </a>
+    </div>
+</div>
+<div class = 'square'>
+    
+    <span></span>
+    <span></span>
+    <span></span>
+    <div class = 'home-page-square-content'>
+        <h2 class='home-page-square-title'> Changing Info</h2>
+        <p>Made a mistake while signing up, or had a branch change?? You can change your info along with your default profile picture by visiting the Change Account Details section within the Account tab in the navigation menu.</p>
+        <a href = '/security'> Try It</a>
+    </div>
+</div>
 
 {% endblock content %}
