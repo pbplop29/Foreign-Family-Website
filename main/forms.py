@@ -5,6 +5,7 @@
 
 # --------------------- Imported the wtforms requirements -------------------- #
 from flask_wtf import FlaskForm, RecaptchaField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, Form, RadioField, SelectField, ValidationError, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from wtforms.fields.html5 import DateField
@@ -160,6 +161,9 @@ class updateform(FlaskForm):
     social = TextAreaField(' How can we reach you ')
 
     gender = RadioField('Gender', choices= [('Male', 'Male'), ('Female', 'Female'), ('LGBTQ...', 'Amongst LGBTQ.....')])
+
+
+    profile_picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
 
     submit = SubmitField('Update')
 

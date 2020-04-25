@@ -1,6 +1,6 @@
 <!-- --------------------------- LAYOUT EXTENDED --------------------------- -->
 {% extends "layout.html" %} {% block content %}
-{%from "formhelpers.html" import render_field%}
+
 <!-- ----------------------------------------------------------------------- -->
 <!-- ----------------------------------------------------------------------- -->
 
@@ -8,6 +8,8 @@
 <!-- ----------------------------------------------------------------------- -->
 <!--                                 IMPORTS                                 -->
 <!-- ----------------------------------------------------------------------- -->
+{%from "formhelpers.html" import render_field%}
+{%from "formhelpers.html" import render_pp_field%}
 {%from "formhelpers.html" import render_social_field%}
 {%from "formhelpers.html" import render_radio_field%}
 {%from "formhelpers.html" import render_recap%}
@@ -23,7 +25,9 @@
 
 
 <!-- ----------------------- FORM TO UPDATE ACCOUNT ------------------------ -->
-<form action="/security" method="POST" class='form2'>
+<form action="/security" method="POST" class='form2' enctype='multipart/form-data'>
+
+<!-- ------------------------- encoding type added because this helps in showing us the erros we get for the file field------------------------- -->
     
     {{form.csrf_token}}
     {{ form.hidden_tag() }}
@@ -47,6 +51,8 @@
     {{render_social_field(form.social,   PLACEHOLDER='Links to Socials (Optional)')}}
 
     {{render_radio_field(form.gender) }}
+
+    {{ render_pp_field(form.profile_picture)}}
     
     {{form.submit (class="text-success p-2  ")}}
     

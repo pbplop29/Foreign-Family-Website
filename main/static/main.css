@@ -233,6 +233,14 @@ color:black;
     
 
 }
+
+.form-field-pp{
+    width:400px;
+    height:30px;
+    transition:0.1s;
+    background-color: #0A0E14;
+    color: #46A29F;
+}
     /* form  */
 .form1{
     max-width:700px;
@@ -764,4 +772,60 @@ color : #66FCF1;
     font-size:25px;
     font-family: 'Indie Flower';
     color: #EA5048;
+}
+
+.college-logo{
+    
+    margin:2rem auto;
+    text-align: center;
+    animation: animate-logo 0.5s linear 
+}
+
+
+@keyframes animate-logo
+{
+    0%
+    {
+        transform: rotate(-20deg);
+    }
+    10%
+    {
+        transform: rotate(20deg);
+    }
+    20%
+    {
+        transform: rotate(-15deg);
+    }
+    30%
+    {
+        transform: rotate(15deg);
+    }
+    40%
+    {
+        transform: rotate(-7deg);
+    }
+    50%
+    {
+        transform: rotate(7deg);
+    }
+    60%
+    {
+        transform: rotate(-5deg);
+    }
+    70%
+    {
+        transform: rotate(5deg);
+    }
+    80%
+    {
+        transform: rotate(-2deg);
+    }
+    90%
+    {
+        transform: rotate(2deg);
+    }
+    100%
+    {
+        transform: rotate(0deg);
+    }
 }
